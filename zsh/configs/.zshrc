@@ -99,4 +99,6 @@ fi
 # Example aliases
 alias zshconfig="vim ~/dotfiles/zsh/configs/.zshrc"
 alias ohmyzsh="vim ~/dotfiles/zsh/configs/.oh-my-zsh"
-alias ls="ls -a"
+alias ls="ls --color=auto"
+alias ll="ls -la"
+alias l.="ls -d .* --color=auto"
