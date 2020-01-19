@@ -9,7 +9,7 @@ Xft.hintstyle: hintslight
 Xft.rgba: rgb
 
 !! URxvt Appearance
-URxvt.termName: screen-256color
+URxvt.termName: rxvt-unicode-256color
 URxvt.geometry: 90x20
 URxvt.internalBorder: 30
 URxvt.borderless: true
@@ -26,6 +26,7 @@ URxvt.perl-ext-common:
 URxvt.scrollTtyKeypress: true
 URxvt*.dynamicColors: on
 URxvt*.font: \
+              xft:Hack:size=10:antialias=true, \
               xft:Iosevka:size=12:antialias=true, \
               xft:Source Code Pro:size=10:antialias=true, \
               xft:TerminessTTF Nerd Font:size=12:antialias=true, \
