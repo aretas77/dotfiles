@@ -22,7 +22,7 @@ Clone this repository:
 
 This method was discovered by researching other people dotfile repositories and it seemed like a quite convenient way to manage dotfiles. Special thanks to [edbizarro](https://github.com/edbizarro) from whom I discovered this method and borrowed some very cool dotfiles.
 
-Install GNU Stow_(if not already installed)_
+Install GNU Stow _(if not already installed)_
 
 	Arch:	pacman -S stow
 	Ubuntu:	apt-get install stow
