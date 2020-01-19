@@ -24,7 +24,7 @@ This method was discovered by researching other people dotfile repositories and 
 
 Install GNU Stow _(if not already installed)_
 
-	Arch:	pacman -S stow
+	Arch:		pacman -S stow
 	Ubuntu:	apt-get install stow
 
 Then, use stow to symlink the dotfiles you want to use, example:
