@@ -13,11 +13,13 @@ call vundle#begin()
 	Plugin 'tpope/vim-fugitive'
 	Plugin 'airblade/vim-gitgutter'
 	Plugin 'morhetz/gruvbox'
+	Plugin 'dylanaraps/wal.vim'
 call vundle#end()            " required
 filetype plugin indent on    " required
 
 " reloading vimrc: :so %
 colorscheme gruvbox
+"colorscheme wal
 set termguicolors
 set background=dark
 let g:gruvbox_contrast_dark = 'medium'
@@ -50,7 +52,7 @@ set number
 set hlsearch
 set linebreak
 
-set colorcolumn=110
+"set colorcolumn=110
 highlight ColorColumn ctermbg=darkgray
 
 let g:clang_format#style_options = {
@@ -107,4 +109,3 @@ function FT_c()
     set cino=g0:0t0(0
     set noet
 endfunction
-
