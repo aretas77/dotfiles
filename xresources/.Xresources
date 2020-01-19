@@ -1,0 +1,63 @@
+! ------------------+
+!! URxvt settings	|
+! ------------------+
+
+Xft.dpi: 96
+Xft.antialias: true
+Xft.hinting: true
+Xft.hintstyle: hintslight
+Xft.rgba: rgb
+
+!! URxvt Appearance
+URxvt.termName: screen-256color
+URxvt.geometry: 90x20
+URxvt.internalBorder: 30
+URxvt.borderless: true
+URxvt*loginShell: true
+
+URxvt.transparent: false
+URxvt.scrollBar: false
+URxvt.saveLines: 1000
+URxvt.scrollWithBuffer: true
+URxvt.perl-ext:
+URxvt.perl-ext-common:
+
+!URxvt.colorUL: yellow
+URxvt.scrollTtyKeypress: true
+URxvt*.dynamicColors: on
+URxvt*.font: \
+              xft:Iosevka:size=12:antialias=true, \
+              xft:Source Code Pro:size=10:antialias=true, \
+              xft:TerminessTTF Nerd Font:size=12:antialias=true, \
+              xft:Unifont:size=12:antialias=false
+URxvt.allow_bold: false
+URxvt*boldMode: true
+URxvt*letterSpace: 0
+URxvt.lineSpace: 1
+URxvt.pointerBlank: false
+
+URxvt.cursorBlink: true
+URxvt.cursorUnderline: false
+
+URxvt.foreground: #ffffff
+URxvt.background: #0E0E0E
+
+! Colorz
+
+urxvt*color0: #200a04
+urxvt*color1: #a04677
+urxvt*color2: #a06f7c
+urxvt*color3: #EFB169
+urxvt*color4: #492da0
+urxvt*color5: #685da0
+urxvt*color6: #dfa05e
+urxvt*color7: #a01c13
+!urxvt*color8: #6B2F4F
+urxvt*color8: #8F3F69
+urxvt*color9: #6a45c8
+urxvt*color10: #e8f3ef
+urxvt*color11: #c8351a
+urxvt*color12: #c89d9d
+urxvt*color13: #a1cbdb
+urxvt*color14: #c8867e
+urxvt*color15: #9eabc8
