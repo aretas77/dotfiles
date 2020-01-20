@@ -1,7 +1,8 @@
+# Set $mod as ALT
 set $mod Mod1
 
 # Set inner/outer gaps
-gaps inner 5
+gaps inner 7
 gaps outer 0
 gaps top 0
 gaps bottom 0
@@ -44,6 +45,12 @@ bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT
 bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -10% && $refresh_i3status
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status
 bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
+
+#bindsym XF86MonBrightnessUp exec xbacklight -inc 10 # increase screen brightness
+#bindsym XF86MonBrightnessDown exec xbacklight -dec 10 # decrease screen brightness
+
+exec "setxkbmap -layout us,lt"
+exec "setxkbmap -option 'grp:grp:alt_shift_toggle'"
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -165,7 +172,7 @@ for_window [class = "Discord"] move window to workspace $ws4
 for_window [class = "Firefox"] move window to workspace $ws2
 
 exec_always --no-startup-id xrdb -merge ~/.Xresources
-exec_always --no-startup-id wal -i ${HOME}/Pictures/wallpapers/Island.jpg
-exec_always --no-startup-id $HOME/.i3/startup/polybar.sh
-#exec_always --no-startup-id compton
+exec_always --no-startup-id wal -i ${HOME}/Pictures/wallpapers/Aurora.jpg
+exec_always --no-startup-id ${HOME}/.i3/startup/polybar.sh
+exec_always --no-startup-id ${HOME}/.i3/startup/compton.sh
 #exec_always --no-startup-id dunst
