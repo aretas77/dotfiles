@@ -65,6 +65,7 @@ let g:airline_powerline_fonts = 1
 let g:airline#extensions#whitespace#enabled = 0
 
 autocmd FileType c,cpp map <buffer><Leader>x <Plug>(operator-clang-format)
+autocmd BufWritePost * GitGutter
 
 " NORMAL mode mappings
 nmap <F2> :NERDTreeToggle<CR>
@@ -109,3 +110,9 @@ function FT_c()
     set cino=g0:0t0(0
     set noet
 endfunction
+
+function! GitStatus()
+	let [a,m,r] = GitGutterGetHunkSummary()
+	return printf('+%d ~%d -%d', a, m, r)
+endfunction
+set statusline+=%{GitStatus()}
