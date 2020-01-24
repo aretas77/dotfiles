@@ -26,8 +26,8 @@ URxvt.perl-ext-common:
 URxvt.scrollTtyKeypress: true
 URxvt*.dynamicColors: on
 URxvt*.font: \
+              xft:Iosevka:style=Regular:size=10:antialias=true, \
               xft:Hack:size=10:antialias=true, \
-              xft:Iosevka:size=12:antialias=true, \
               xft:Source Code Pro:size=10:antialias=true, \
               xft:TerminessTTF Nerd Font:size=12:antialias=true, \
               xft:Unifont:size=12:antialias=false
