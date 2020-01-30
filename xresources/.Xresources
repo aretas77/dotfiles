@@ -11,7 +11,7 @@ Xft.rgba: rgb
 !! URxvt Appearance
 URxvt.termName: rxvt-unicode-256color
 URxvt.geometry: 90x20
-URxvt.internalBorder: 30
+URxvt.internalBorder: 10
 URxvt.borderless: true
 URxvt*loginShell: true
 
@@ -20,13 +20,19 @@ URxvt.scrollBar: false
 URxvt.saveLines: 1000
 URxvt.scrollWithBuffer: true
 URxvt.perl-ext:
-URxvt.perl-ext-common:
+URxvt.perl-ext-common: tabbed
+
+! Colors of tabs
+URxvt.tabbed.tabbar-fg: 2
+URxvt.tabbed.tabbar-bg: 0
+URxvt.tabbed.tab-fg: 3
+URxvt.tabbed.tag-bg: 0
 
 !URxvt.colorUL: yellow
 URxvt.scrollTtyKeypress: true
 URxvt*.dynamicColors: on
 URxvt*.font: \
-              xft:Iosevka:style=Regular:size=10:antialias=true, \
+              xft:Iosevka:style=Regular:size=12:antialias=true, \
               xft:Hack:size=10:antialias=true, \
               xft:Source Code Pro:size=10:antialias=true, \
               xft:TerminessTTF Nerd Font:size=12:antialias=true, \
@@ -37,7 +43,7 @@ URxvt*letterSpace: 0
 URxvt.lineSpace: 1
 URxvt.pointerBlank: false
 
-URxvt.cursorBlink: true
+URxvt.cursorBlink: false
 URxvt.cursorUnderline: false
 
 URxvt.foreground: #ffffff
@@ -53,8 +59,7 @@ urxvt*color4: #492da0
 urxvt*color5: #685da0
 urxvt*color6: #dfa05e
 urxvt*color7: #a01c13
-!urxvt*color8: #6B2F4F
-urxvt*color8: #8F3F69
+urxvt*color8: #6B2F4F
 urxvt*color9: #6a45c8
 urxvt*color10: #e8f3ef
 urxvt*color11: #c8351a
