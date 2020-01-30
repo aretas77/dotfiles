@@ -20,7 +20,7 @@ filetype plugin indent on    " required
 " reloading vimrc: :so %
 colorscheme gruvbox
 "colorscheme wal
-set termguicolors
+"set termguicolors
 set background=dark
 let g:gruvbox_contrast_dark = 'medium'
 
