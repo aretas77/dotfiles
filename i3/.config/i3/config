@@ -50,7 +50,7 @@ bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOU
 #bindsym XF86MonBrightnessDown exec xbacklight -dec 10 # decrease screen brightness
 
 exec "setxkbmap -layout us,lt"
-exec_always --no-startup-id "setxkbmap -option 'grp:win_space_toggle'"
+exec_always --no-startup-id setxkbmap -option 'grp:win_space_toggle'
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
