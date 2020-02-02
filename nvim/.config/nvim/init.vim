@@ -36,33 +36,44 @@ let g:python3_host_prog = '/usr/bin/python3'
 syntax on
 syntax enable
 
+"----------------------------------------------
+" General settings
+"----------------------------------------------
+
 " colorscheme
-"let base16colorspace=256
-"colorscheme base16-gruvbox-dark-hard
 colorscheme gruvbox
 set background=dark
 
+set autoindent						" take indent for new line from previous line
+set list							" show trailing whitespace
 set number
-"set relativenumber
 
-" Search configuration
+" Search options
 set ignorecase
-set smartcase
+set smartcase						" case-sensitive if expression contains a capital letter
 set incsearch
+set hlsearch
+set nolazyredraw
 
 set cursorline
-set nolazyredraw
 set hidden
+set title
 
 " Tab and Indent configuration
 set expandtab
 set tabstop=4
 set shiftwidth=4
+set laststatus=2					" always slow statusline
 
-" vim-autoformat
-" noremap <F3> :Autoformat<CR>
+" Error bells
+set noerrorbells
+set novisualbell
 
 set synmaxcol=1000
+
+"----------------------------------------------
+" Python
+"----------------------------------------------
 
 " NCM2
 augroup NCM2
@@ -88,11 +99,6 @@ augroup NCM2
   let ncm2#complete_length = [[1, 1]]
   let g:ncm2#matcher = 'substrfuzzy'
 augroup END
-
-set laststatus=2  " always slow statusline
-
-set noerrorbells
-set visualbell
 
 " easy split movement
 nnoremap <C-h> <C-w>h
