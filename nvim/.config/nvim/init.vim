@@ -29,11 +29,6 @@ call plug#end()
 
 filetype plugin indent on
 
-" True Color Support if it's avaiable in terminal
-if has("termguicolors")
- "   set termguicolors
-endif
-
 " path to your python 
 let g:python3_host_prog = '/usr/bin/python3'
 
