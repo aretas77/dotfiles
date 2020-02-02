@@ -2,6 +2,9 @@
 set nocompatible               " be iMproved
 filetype off                   " required!
 
+let &rtp  = '~/.vim/bundle/vimtex,' . &rtp
+let &rtp .= ',~/.vim/bundle/vimtex/after'
+
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
@@ -14,6 +17,7 @@ call vundle#begin()
 	Plugin 'airblade/vim-gitgutter'
 	Plugin 'morhetz/gruvbox'
 	Plugin 'dylanaraps/wal.vim'
+	Plugin 'lervag/vimtex'
 call vundle#end()            " required
 filetype plugin indent on    " required
 
@@ -23,7 +27,6 @@ colorscheme gruvbox
 "set termguicolors
 set background=dark
 let g:gruvbox_contrast_dark = 'medium'
-
 
 au FileType c		call FT_c()
 
@@ -64,7 +67,10 @@ let g:clang_format#style_options = {
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#whitespace#enabled = 0
 
+let g:vimtex_view_general_viewer = 'zathura'
+
 autocmd FileType c,cpp map <buffer><Leader>x <Plug>(operator-clang-format)
+autocmd FileType tex setl updatetime=1
 autocmd BufWritePost * GitGutter
 
 " NORMAL mode mappings
