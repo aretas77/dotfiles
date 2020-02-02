@@ -1,21 +1,30 @@
 call plug#begin('~/.local/share/nvim/plugged')
     Plug 'davidhalter/jedi-vim'
     " UI related
-    Plug 'chriskempson/base16-vim'
 	Plug 'morhetz/gruvbox'
     Plug 'vim-airline/vim-airline'
     Plug 'vim-airline/vim-airline-themes'
     " Better Visual Guide
     Plug 'Yggdroot/indentLine'
+
     " Formater
     Plug 'Chiel92/vim-autoformat'
+
     " Autocomplete
     Plug 'ncm2/ncm2'
     Plug 'roxma/nvim-yarp'
 
+	Plug 'scrooloose/nerdtree'
+	Plug 'jistr/vim-nerdtree-tabs'
+
     Plug 'ncm2/ncm2-bufword'
     Plug 'ncm2/ncm2-path'
     Plug 'ncm2/ncm2-jedi'
+
+	Plug 'airblade/vim-gitgutter'
+	Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+	Plug 'shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+    Plug 'dense-analysis/ale'
 call plug#end()
 
 filetype plugin indent on
