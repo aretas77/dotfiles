@@ -1,9 +1,10 @@
 call plug#begin('~/.local/share/nvim/plugged')
     Plug 'davidhalter/jedi-vim'
     " UI related
-	Plug 'morhetz/gruvbox'
+    Plug 'morhetz/gruvbox'
     Plug 'vim-airline/vim-airline'
     Plug 'vim-airline/vim-airline-themes'
+
     " Better Visual Guide
     Plug 'Yggdroot/indentLine'
 
@@ -44,13 +45,13 @@ syntax enable
 colorscheme gruvbox
 set background=dark
 
-set autoindent						" take indent for new line from previous line
-set list							" show trailing whitespace
+set autoindent                      " take indent for new line from previous line
+set list                            " show trailing whitespace
 set number
 
 " Search options
 set ignorecase
-set smartcase						" case-sensitive if expression contains a capital letter
+set smartcase                       " case-sensitive if expression contains a capital letter
 set incsearch
 set hlsearch
 set nolazyredraw
@@ -63,13 +64,18 @@ set title
 set expandtab
 set tabstop=4
 set shiftwidth=4
-set laststatus=2					" always slow statusline
+set softtabstop=4
+set laststatus=2                    " always slow statusline
+set colorcolumn=80                  " show column line at 80 chars
 
 " Error bells
 set noerrorbells
 set novisualbell
 
 set synmaxcol=1000
+set updatetime=100
+
+
 
 "----------------------------------------------
 " Python
@@ -77,27 +83,27 @@ set synmaxcol=1000
 
 " NCM2
 augroup NCM2
-  autocmd!
-  " enable ncm2 for all buffers
-  autocmd BufEnter * call ncm2#enable_for_buffer()
-  " :help Ncm2PopupOpen for more information
-  set completeopt=noinsert,menuone,noselect
-  " When the <Enter> key is pressed while the popup menu is visible, it only
-  " hides the menu. Use this mapping to close the menu and also start a new line.
-  inoremap <expr> <CR> (pumvisible() ? "\<c-y>\<cr>" : "\<CR>")
-  " uncomment this block if you use vimtex for LaTex
-  " autocmd Filetype tex call ncm2#register_source({
-  "           \ 'name': 'vimtex',
-  "           \ 'priority': 8,
-  "           \ 'scope': ['tex'],
-  "           \ 'mark': 'tex',
-  "           \ 'word_pattern': '\w+',
-  "           \ 'complete_pattern': g:vimtex#re#ncm2,
-  "           \ 'on_complete': ['ncm2#on_complete#omni', 'vimtex#complete#omnifunc'],
-  "           \ })
-  let ncm2#popup_delay = 5
-  let ncm2#complete_length = [[1, 1]]
-  let g:ncm2#matcher = 'substrfuzzy'
+    autocmd!
+    " enable ncm2 for all buffers
+    autocmd BufEnter * call ncm2#enable_for_buffer()
+    " :help Ncm2PopupOpen for more information
+    set completeopt=noinsert,menuone,noselect
+    " When the <Enter> key is pressed while the popup menu is visible, it only
+    " hides the menu. Use this mapping to close the menu and also start a new line.
+    inoremap <expr> <CR> (pumvisible() ? "\<c-y>\<cr>" : "\<CR>")
+    " uncomment this block if you use vimtex for LaTex
+    " autocmd Filetype tex call ncm2#register_source({
+    "           \ 'name': 'vimtex',
+    "           \ 'priority': 8,
+    "           \ 'scope': ['tex'],
+    "           \ 'mark': 'tex',
+    "           \ 'word_pattern': '\w+',
+    "           \ 'complete_pattern': g:vimtex#re#ncm2,
+    "           \ 'on_complete': ['ncm2#on_complete#omni', 'vimtex#complete#omnifunc'],
+    "           \ })
+    let ncm2#popup_delay = 5
+    let ncm2#complete_length = [[1, 1]]
+    let g:ncm2#matcher = 'substrfuzzy'
 augroup END
 
 " easy split movement
