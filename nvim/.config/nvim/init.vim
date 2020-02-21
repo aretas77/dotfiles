@@ -124,7 +124,21 @@ nnoremap tj :tabprev<CR>
 nnoremap th :tabfirst<CR>
 nnoremap tl :tablast<CR>
 
+nnoremap <leader>hd :SignifyHunkDiff<CR>
+nnoremap <leader>hu :SignifyHunkUndo<CR>
 nnoremap <silent> <F2> :NERDTreeToggle<CR>
+nnoremap <silent> <F3> :call ToggleLineHighlight()<CR>
+function! ToggleLineHighlight()
+    if g:signify_line_highlight
+        let g:signify_line_highlight = 0
+    else
+        let g:signify_line_highlight = 1
+    endif
+endfunction
+
+let g:signify_sign_change = '~'
+
+let g:indentLine_enabled = 1
 
 " Disable Jedi-vim autocompletion and enable call-signatures options
 "let g:jedi#auto_initialization = 1
@@ -135,7 +149,10 @@ nnoremap <silent> <F2> :NERDTreeToggle<CR>
 "let g:jedi#completions_command = ""
 "let g:jedi#show_call_signatures = "1"
 
-"go
+"----------------------------------------------
+" Go
+"----------------------------------------------
+
 let g:go_highlight_functions = 1
 let g:go_highlight_methods = 1
 let g:go_highlight_build_constraints = 1
