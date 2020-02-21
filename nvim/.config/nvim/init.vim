@@ -15,23 +15,28 @@ call plug#begin('~/.local/share/nvim/plugged')
     Plug 'ncm2/ncm2'
     Plug 'roxma/nvim-yarp'
 
-	Plug 'scrooloose/nerdtree'
-	Plug 'jistr/vim-nerdtree-tabs'
+    " Vue.js
+    Plug 'posva/vim-vue'
+
+    Plug 'scrooloose/nerdtree'
+    Plug 'jistr/vim-nerdtree-tabs'
 
     Plug 'ncm2/ncm2-bufword'
     Plug 'ncm2/ncm2-path'
     Plug 'ncm2/ncm2-jedi'
 
-	Plug 'airblade/vim-gitgutter'
-	Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
-	Plug 'shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+    "Plug 'airblade/vim-gitgutter' - use signify instead of gitgutter
+    Plug 'mhinz/vim-signify'
+    Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+    Plug 'shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
     Plug 'dense-analysis/ale'
 call plug#end()
 
 filetype plugin indent on
 
-" path to your python 
+" path to your python
 let g:python3_host_prog = '/usr/bin/python3'
+let mapleader=","
 
 " UI configuration
 syntax on
