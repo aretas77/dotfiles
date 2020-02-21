@@ -181,5 +181,39 @@ let g:go_info_mode='gopls'
 let g:airline_left_sep  = ''
 let g:airline_right_sep = ''
 let g:airline#extensions#ale#enabled = 1
-let airline#extensions#ale#error_symbol = 'E:'
-let airline#extensions#ale#warning_symbol = 'W:'
+"let airline#extensions#ale#error_symbol = 'E:'
+"let airline#extensions#ale#warning_symbol = 'W:'
+
+"----------------------------------------------
+" Javascript, Vue, etc..
+"----------------------------------------------
+
+autocmd FileType vue setlocal shiftwidth=2 softtabstop=2 expandtab
+autocmd FileType javascript setlocal shiftwidth=2 softtabstop=2 expandtab
+
+
+"----------------------------------------------
+" Ale settings
+"----------------------------------------------
+
+let g:ale_enabled = 1
+let g:ale_keep_list_window_open = 0
+let g:ale_list_window_size = 5
+let g:ale_ope_list = 1
+let g:ale_set_highligths = 1
+let b:ale_linter_aliases = ['javascript', 'vue']
+let g:ale_linters = {
+        \   'c': ['clang'],
+        \   'cpp': ['clang++'],
+        \   'css': ['csslint', 'stylelint'],
+        \   'go': ['go build', 'golangci-lint'],
+        \   'python': ['python'],
+        \   'shell': ['sh', 'shellcheck'],
+        \   'vim': ['vint'],
+        \   'javascript': ['eslint'],
+        \   'vue': ['eslint', 'vls']
+        \}
+let g:ale_lint_on_save = 1
+let g:ale_lint_on_enter = 1
+let g:ale_sign_column_always = 1
+let g:ale_fix_on_save = 1
