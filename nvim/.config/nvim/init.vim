@@ -11,19 +11,34 @@ call plug#begin('~/.local/share/nvim/plugged')
     " Formater
     Plug 'Chiel92/vim-autoformat'
 
+	" Auto surrounding tags and etc.
+	Plug 'tpope/vim-surround'
+
     " Autocomplete
     Plug 'ncm2/ncm2'
     Plug 'roxma/nvim-yarp'
 
+    Plug 'ludovicchabant/vim-gutentags'
+    Plug 'mfulz/cscope.nvim'
+
     " Vue.js
     Plug 'posva/vim-vue'
+    Plug 'ap/vim-css-color'
 
     Plug 'scrooloose/nerdtree'
     Plug 'jistr/vim-nerdtree-tabs'
 
+	" Python syntax highlighting and more
+	Plug 'numirias/semshi', { 'do': ':UpdateRemotePlugins' }
+	Plug 'Vimjas/vim-python-pep8-indent', {'for': 'python'}
+
     Plug 'ncm2/ncm2-bufword'
     Plug 'ncm2/ncm2-path'
     Plug 'ncm2/ncm2-jedi'
+
+    " Required for function search for Go
+    Plug 'Shougo/unite.vim'
+    Plug 'devjoe/vim-codequery'
 
     "Plug 'airblade/vim-gitgutter' - use signify instead of gitgutter
     Plug 'mhinz/vim-signify'
@@ -211,7 +226,8 @@ let g:ale_linters = {
         \   'shell': ['sh', 'shellcheck'],
         \   'vim': ['vint'],
         \   'javascript': ['eslint'],
-        \   'vue': ['eslint', 'vls']
+        \   'vue': ['eslint', 'vls'],
+		\	'sh': ['shellcheck']
         \}
 let g:ale_lint_on_save = 1
 let g:ale_lint_on_enter = 1
