@@ -8,6 +8,8 @@ bindkey -v
 # End of lines configured by zsh-newuser-install
 # The following lines were added by compinstall
 zstyle :compinstall filename '/home/aretasp/.zshrc'
+setopt no_share_history
+unsetopt share_history
 
 autoload -Uz compinit
 compinit
