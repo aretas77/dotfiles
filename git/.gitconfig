@@ -1,0 +1,22 @@
+[user]
+	email = aretas.pau@gmail.com
+	name = Aretas Paulauskas
+[url "git@github.com:"]
+	insteadOf = https://github.com/
+[core]
+	editor = vim
+	whitespace = fix,trailing-space,cr-at-eol
+	excludesfile = ~/.gitignore
+[color "status"]
+	added = green
+	untracked = red
+	changed = yellow
+[alias]
+	c = commit
+	cm = commit -m
+	##################
+	d = diff
+	dc = diff --cached
+	##################
+	s = status
+	sb = status -s -b
