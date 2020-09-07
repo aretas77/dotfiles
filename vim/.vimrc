@@ -28,7 +28,6 @@ colorscheme gruvbox
 set background=dark
 let g:gruvbox_contrast_dark = 'medium'
 
-au FileType c		call FT_c()
 
 syntax enable
 
@@ -69,7 +68,9 @@ let g:airline#extensions#whitespace#enabled = 0
 
 let g:vimtex_view_general_viewer = 'zathura'
 
+autocmd FileType c call FT_c()
 autocmd FileType c,cpp map <buffer><Leader>x <Plug>(operator-clang-format)
+autocmd FileType tex call FT_tex()
 autocmd FileType tex setl updatetime=1
 autocmd BufWritePost * GitGutter
 
@@ -115,6 +116,12 @@ endfunction
 function FT_c()
     set cino=g0:0t0(0
     set noet
+endfunction
+
+function FT_tex()
+	set tabstop=4
+	set nosmartindent
+	set indentexpr=
 endfunction
 
 function! GitStatus()
