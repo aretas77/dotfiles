@@ -94,6 +94,7 @@ alias ls="ls --color=auto"
 alias ll="ls -la"
 alias l.="ls -d .* --color=auto"
 alias ip="ip -c"
+#alias vim="nvim"
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
@@ -102,6 +103,7 @@ alias ip="ip -c"
 unsetopt share_history
 
 PATH="/home/aretasp/.local/bin${PATH:+:${PATH}}"; export PATH;
+PATH="/home/aretasp/sbin${PATH:+:${PATH}}"; export PATH;
 #PATH="/home/aretasp/perl5/bin${PATH:+:${PATH}}"; export PATH;
 #PERL5LIB="/home/aretasp/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"; export PERL5LIB;
 #PERL_LOCAL_LIB_ROOT="/home/aretasp/perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB_ROOT}}"; export PERL_LOCAL_LIB_ROOT;
