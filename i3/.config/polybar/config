@@ -94,20 +94,26 @@ ws-icon-5 = 6;ﱦ
 ws-icon-6 = 7;
 ws-icon-default =  
 
-label-unfocused = %icon%
+;label-unfocused = %icon%
+label-unfocused = %index%
 ;label-unfocused-foreground = ${colors.six}
 label-unfocused-padding = 1
 label-unfocused-font = 3
 
 label-focused = %icon%
+;label-focused = %index%
 ;label-focused-foreground = ${colors.foreground}
 label-focused-padding = 1
 label-focused-font = 2
 
-label-urgent = %icon%
+;label-urgent = %icon%
+label-urgent = %index%
 ;label-urgent-foreground = ${colors.alert}
 label-urgent-padding = 1
 label-urgent-font = 2
+
+label-separator = |
+label-separator-padding = 2
 
 [module/time]
 type = internal/date
@@ -177,7 +183,7 @@ type = internal/network
 interface = wlan0
 
 interval = 5
-
+; %downspeed% |  %upspeed%"
 label-connected = "%{A1:networkmanager_dmenu &:} %essid%%{A}"
 label-disconnected = "%{A1:networkmanager_dmenu &:}睊 Not Connected%{A}"
 
@@ -189,11 +195,19 @@ label =  %percentage%%
 type = internal/memory
 label =  %gb_used%
 
-[module/network]
-type = internal/network
-interface = wlan0
-label-connected =  %downspeed% |  %upspeed% 
-
 [module/start]
 type = custom/text
 content = "%{A1:rofi -show drun -theme ~/.cache/wal/colors-rofi-dark.rasi:}%{A}"
+
+[module/filesystem]
+type = internal/fs
+
+; Mountpoints
+mount-0 = /
+mount-1 = /home
+
+interval = 10
+fixed-values = true
+spacing = 4
+
+label-mounted = %mountpoint%: %percentage_free%% of %total%
