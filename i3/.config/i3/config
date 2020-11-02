@@ -23,7 +23,7 @@ gaps top 0
 gaps bottom 0
 
 for_window [class	= "^.*"] border pixel 0
-for_window [title	= "^.*"] border pixel 0
+for_window [title	= "^.*"] border pixel 1
 
 smart_borders on
 

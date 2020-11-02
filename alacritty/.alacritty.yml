@@ -15,7 +15,7 @@ env:
 
 window:
   # Spread additional padding evenly around the terminal content.
-  #dynamic_padding: false
+  dynamic_padding: true
 
   # - full: Borders and title bar
   # - none: Neither borders nor title bar
