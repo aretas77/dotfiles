@@ -29,7 +29,7 @@ height = 15
 offset-y = 0
 offset-x = 0
 
-border-top-size = 9
+border-top-size = 10
 border-bottom-size = 0
 border-right-size = 10
 border-left-size = 10
@@ -40,6 +40,7 @@ border-left-size = 10
 
 bottom = false
 monitor = ${env:MONITOR:}
+monitor-fallback =
 override-redirect = false
 
 ;-------;
@@ -67,12 +68,24 @@ padding-left = 2
 padding-right = 2
 module-margin = 1.5
 
-modules-left = battery volume backlight
+modules-left = battery volume backlight cpu memory
 modules-center = i3
-modules-right = cpu wlan date time
+modules-right = kernel wlan date time
 
 tray-position = none
 tray-detached = true
+
+;----------;
+; SETTINGS ;
+;----------;
+
+[settings]
+
+throttle-output = 5
+throttle-output-for = 10
+
+; Reload upon receiving XCB_RANDR_SCREEN_CHANGE_NOTIFY events
+screenchange-reload = true
 
 ;---------;
 ; MODULES ;
@@ -95,40 +108,47 @@ label-empty =
 label-empty-foreground = ${colors.foreground}
 
 [module/i3]
-type = internal/i3
+type					= internal/i3
 
-pin-workspaces = true
-strip-wsnumbers = true
-enable-scroll = false
+index-sort				= true
+pin-workspaces			= false
+strip-wsnumbers 		= true
+enable-click			= true
 
-ws-icon-0 = 1; 
-ws-icon-1 = 2; 
-ws-icon-2 = 3; 
-ws-icon-3 = 4; 
-ws-icon-4 = 5;
-ws-icon-5 = 6;ﱦ
-ws-icon-6 = 7;
-ws-icon-default =  
+wrapping-scroll			= false
+enable-scroll			= false
+reverse-scroll			= false
 
-;label-unfocused = %icon%
-label-unfocused = %index%
-;label-unfocused-foreground = ${colors.six}
+fuzzy-match				= true
+
+;ws-icon-0				= 1; 
+;ws-icon-1 				= 2; 
+;ws-icon-2 				= 3; 
+;ws-icon-3 				= 4; 
+;ws-icon-4 				= 5;
+;ws-icon-5 				= 6;ﱦ
+;ws-icon-6 				= 7;
+;ws-icon-default		=  
+
+;extra icons to choose from
+;http://fontawesome.io/cheatsheet/
+;       v     
+
+format					= <label-state>
+
+label-focused			= %index%
+label-focused-padding	= 1
+label-focused-font		= 2
+
+label-unfocused			= ${self.label-focused}
 label-unfocused-padding = 1
-label-unfocused-font = 3
+label-unfocused-font	= 3
 
-label-focused = %icon%
-;label-focused = %index%
-;label-focused-foreground = ${colors.foreground}
-label-focused-padding = 1
-label-focused-font = 2
+label-urgent			= ${self.label-focused}
+label-urgent-padding	= 1
+label-urgent-font		= 2
 
-;label-urgent = %icon%
-label-urgent = %index%
-;label-urgent-foreground = ${colors.alert}
-label-urgent-padding = 1
-label-urgent-font = 2
-
-label-separator = |
+label-separator			= |
 label-separator-padding = 2
 
 [module/time]
@@ -180,8 +200,11 @@ click-left =
 [module/volume]
 type = internal/alsa
 
+label-volume = %percentage%%
+
+format-muted-prefix = 
 format-volume = <ramp-volume> <label-volume>
-format-muted =  0%
+format-muted = "  Muted"
 
 ramp-volume-0 = 
 ramp-volume-1 = 
@@ -207,18 +230,40 @@ type = internal/network
 
 interface = wlan0
 
-interval = 5
-; %downspeed% |  %upspeed%"
+interval = 1
+accumulate-stats = true
+unknown-as-up = true
+
+;  %downspeed% |  %upspeed%"
+
 label-connected = "%{A1:networkmanager_dmenu &:} %essid%%{A}"
 label-disconnected = "%{A1:networkmanager_dmenu &:}睊 Not Connected%{A}"
 
 [module/cpu]
 type = internal/cpu
-label =  %percentage%%
+interval = 0.5
+
+format = <label>
+format-prefix = 
+
+label = " %percentage%%"
+
+[module/kernel]
+type = custom/script
+
+exec = uname -r
+tail = false
+interval = 1024
 
 [module/memory]
 type = internal/memory
-label =  %gb_used%
+interval = 3
+
+format = <label>
+format-prefix = 
+
+label = " %gb_used%"
+label-font = 1
 
 [module/start]
 type = custom/text
