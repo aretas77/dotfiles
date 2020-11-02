@@ -1,15 +1,15 @@
 dotfiles
 ========
 
-Here I keep my collection of personal dotfiles. These dotfiles are currently in progress so there will be a lot of changes coming in.
+Here I keep my collection of personal dotfiles which I am using on an Arch Linux distribution. These dotfiles are currently in progress so there will be a lot of changes coming in.
 
-My dotfiles will be focused mainly on:
+My dotfiles are focused mainly on:
 
 * Programming with C/C++.
 * Kernel development.
 * Some git config magic.
 * Some eye-candy.
-* Fully compatible with my Dell XPS 9570 laptop.
+* Fully compatible with Dell XPS 9570 laptop.
 
 Installation
 ------------
@@ -30,3 +30,5 @@ Install GNU Stow _(if not already installed)_
 Then, use stow to symlink the dotfiles you want to use, example:
 
 	stow xresources
+	stow alacrity
+	stow vim
