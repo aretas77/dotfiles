@@ -1,4 +1,4 @@
-set-option -g -q mouse on
+#set-option -g -q mouse on
 
 # No delay for escape key press
 set -sg escape-time 0
