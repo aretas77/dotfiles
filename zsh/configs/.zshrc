@@ -94,6 +94,8 @@ alias ls="ls --color=auto"
 alias ll="ls -la"
 alias l.="ls -d .* --color=auto"
 alias ip="ip -c"
+alias ag="ag --ignore 'tags' --ignore '*.out'"
+alias pr="fzf --preview="cat {}" --preview-window=right:70%:wrap"
 #alias vim="nvim"
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
@@ -101,11 +103,7 @@ alias ip="ip -c"
 
 #setopt no_share_history
 unsetopt share_history
+setopt appendhistory nomatch notify
 
 PATH="/home/aretasp/.local/bin${PATH:+:${PATH}}"; export PATH;
 PATH="/home/aretasp/sbin${PATH:+:${PATH}}"; export PATH;
-#PATH="/home/aretasp/perl5/bin${PATH:+:${PATH}}"; export PATH;
-#PERL5LIB="/home/aretasp/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"; export PERL5LIB;
-#PERL_LOCAL_LIB_ROOT="/home/aretasp/perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB_ROOT}}"; export PERL_LOCAL_LIB_ROOT;
-#PERL_MB_OPT="--install_base \"/home/aretasp/perl5\""; export PERL_MB_OPT;
-#PERL_MM_OPT="INSTALL_BASE=/home/aretasp/perl5"; export PERL_MM_OPT;
