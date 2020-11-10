@@ -180,7 +180,8 @@ for_window [window_role="pop_up"] floating enable
 for_window [window_role="task_dialog"] floating enable
 
 exec_always --no-startup-id xrdb -merge ~/.Xresources
-exec_always --no-startup-id wal -i ${HOME}/Pictures/wallpapers/desert_night.jpg --saturate 0.2
+#exec_always --no-startup-id wal -i ${HOME}/Pictures/wallpapers/desert_night.jpg --saturate 0.2
+exec_always --no-startup-id wal -i ${HOME}/Pictures/wallpapers/decayed.jpg --saturate 0.2
 exec_always --no-startup-id ${HOME}/.i3/startup/polybar.sh
 exec_always --no-startup-id ${HOME}/.i3/startup/compton.sh
 #exec_always --no-startup-id dunst
