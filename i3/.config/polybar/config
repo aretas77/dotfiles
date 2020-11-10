@@ -63,14 +63,18 @@ border-color = 0
 ; MISCELLANEOUS ;
 ;---------------;
 
+;include-directory = ~/.config/polybar/scripts/
+
 fixed-center = true
 padding-left = 2
 padding-right = 2
 module-margin = 1.5
 
-modules-left = battery volume backlight cpu memory
+wm-restack = i3
+
+modules-left = updates battery volume backlight cpu memory
 modules-center = i3
-modules-right = kernel wlan date time
+modules-right = wlan date time
 
 tray-position = none
 tray-detached = true
@@ -111,7 +115,7 @@ label-empty-foreground = ${colors.foreground}
 type					= internal/i3
 
 index-sort				= true
-pin-workspaces			= false
+pin-workspaces			= true
 strip-wsnumbers 		= true
 enable-click			= true
 
@@ -134,18 +138,29 @@ fuzzy-match				= true
 ;http://fontawesome.io/cheatsheet/
 ;       v     
 
-format					= <label-state>
+format					= <label-state> <label-mode>
+;format					= "%{T1}<label-state><label-mode>%{T-}"
 
+label-mode				= %mode%
+;label-mode-padding		= 2
+
+; focused - active workspace on focused monitor
 label-focused			= %index%
 label-focused-padding	= 1
 label-focused-font		= 2
 
+; unfocused - inactive workspace on any monitor
 label-unfocused			= ${self.label-focused}
-label-unfocused-padding = 1
-label-unfocused-font	= 3
+label-unfocused-padding = ${self.label-focused-padding}
+label-unfocused-font	= 1
+
+; visible - active workspace on any monitor
+label-visible-focused	= ${self.label-focused}
+label-visible-padding	= ${self.label-focused-padding}
+label-visible-font		= 2
 
 label-urgent			= ${self.label-focused}
-label-urgent-padding	= 1
+label-urgent-padding	= ${self.label-focused-padding}
 label-urgent-font		= 2
 
 label-separator			= |
@@ -176,7 +191,8 @@ full-at = 95
 
 format-discharging = <ramp-capacity> <label-discharging>
 format-full = <ramp-capacity> <label-full>
-format-charging = <animation-charging> <label-charging> ;  <label-charging>
+format-charging = <animation-charging> <label-charging>
+;  <label-charging>
 
 format-full-spacing = 1
 format-charging-spacing = 1
@@ -236,7 +252,7 @@ unknown-as-up = true
 
 ;  %downspeed% |  %upspeed%"
 
-label-connected = "%{A1:networkmanager_dmenu &:} %essid%%{A}"
+label-connected = " %downspeed% |  %upspeed% %{A1:networkmanager_dmenu &:} %essid%%{A}"
 label-disconnected = "%{A1:networkmanager_dmenu &:}睊 Not Connected%{A}"
 
 [module/cpu]
@@ -281,3 +297,13 @@ fixed-values = true
 spacing = 4
 
 label-mounted = %mountpoint%: %percentage_free%% of %total%
+
+[module/updates]
+type = custom/script
+exec = ~/dotfiles/i3/.config/polybar/scripts/updates.sh
+exec-if = "ping -q -w 2 -c 1 8.8.8.8 > /dev/null"
+interval = 600
+tail = true
+
+format = <label>
+format-prefix = " "
