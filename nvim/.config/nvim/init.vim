@@ -11,12 +11,22 @@ call plug#begin('~/.local/share/nvim/plugged')
     " Formater
     Plug 'Chiel92/vim-autoformat'
 
-	" Auto surrounding tags and etc.
-	Plug 'tpope/vim-surround'
+    " Auto surrounding tags and etc.
+    " TODO: learn how it works
+    Plug 'tpope/vim-surround'
+
+    " tabular plugin is used to format tables
+    Plug 'godlygeek/tabular'
+    " JSON front matter highlight plugin
+    Plug 'elzr/vim-json'
+    Plug 'plasticboy/vim-markdown'
 
     " Autocomplete
     Plug 'ncm2/ncm2'
     Plug 'roxma/nvim-yarp'
+
+    " Markdown
+    Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install'  }
 
     Plug 'ludovicchabant/vim-gutentags'
     Plug 'mfulz/cscope.nvim'
@@ -26,11 +36,10 @@ call plug#begin('~/.local/share/nvim/plugged')
     Plug 'ap/vim-css-color'
 
     Plug 'scrooloose/nerdtree'
-    Plug 'jistr/vim-nerdtree-tabs'
 
-	" Python syntax highlighting and more
-	Plug 'numirias/semshi', { 'do': ':UpdateRemotePlugins' }
-	Plug 'Vimjas/vim-python-pep8-indent', {'for': 'python'}
+    " Python syntax highlighting and more
+    Plug 'numirias/semshi', { 'do': ':UpdateRemotePlugins' }
+    Plug 'Vimjas/vim-python-pep8-indent', {'for': 'python'}
 
     Plug 'ncm2/ncm2-bufword'
     Plug 'ncm2/ncm2-path'
@@ -95,8 +104,6 @@ set novisualbell
 set synmaxcol=1000
 set updatetime=100
 
-
-
 "----------------------------------------------
 " Python
 "----------------------------------------------
@@ -143,6 +150,10 @@ nnoremap <leader>hd :SignifyHunkDiff<CR>
 nnoremap <leader>hu :SignifyHunkUndo<CR>
 nnoremap <silent> <F2> :NERDTreeToggle<CR>
 nnoremap <silent> <F3> :call ToggleLineHighlight()<CR>
+nnoremap <silent> <F8> :let @/='\<<C-R>=expand("<cword>")<CR>\>'<CR>:set hls<CR>
+nnoremap <silent> <leader><F8> :set nohls<CR>
+
+" Toggles changed line highlight for signify
 function! ToggleLineHighlight()
     if g:signify_line_highlight
         let g:signify_line_highlight = 0
@@ -211,25 +222,51 @@ autocmd FileType javascript setlocal shiftwidth=2 softtabstop=2 expandtab
 " Ale settings
 "----------------------------------------------
 
+highlight ALEWarning ctermbg=DarkMagenta
+nmap <silent> <C-k> <Plug>(ale_previous_wrap)
+nmap <silent> <C-j> <Plug>(ale_next_wrap)
+
 let g:ale_enabled = 1
 let g:ale_keep_list_window_open = 0
 let g:ale_list_window_size = 5
 let g:ale_ope_list = 1
 let g:ale_set_highligths = 1
+let g:ale_c_parse_makefile = 1
 let b:ale_linter_aliases = ['javascript', 'vue']
 let g:ale_linters = {
         \   'c': ['clang'],
         \   'cpp': ['clang++'],
         \   'css': ['csslint', 'stylelint'],
         \   'go': ['go build', 'golangci-lint'],
-        \   'python': ['python'],
-        \   'shell': ['sh', 'shellcheck'],
+        \   'python': ['flake8', 'python'],
         \   'vim': ['vint'],
         \   'javascript': ['eslint'],
         \   'vue': ['eslint', 'vls'],
-		\	'sh': ['shellcheck']
+        \   'sh': ['shellcheck'],
+        \   'shell': ['shellcheck']
         \}
 let g:ale_lint_on_save = 1
 let g:ale_lint_on_enter = 1
 let g:ale_sign_column_always = 1
-let g:ale_fix_on_save = 1
+let g:ale_fix_on_save = 0
+let g:ale_linters_explicit = 1
+
+"----------------------------------------------
+" Markdown settings
+"----------------------------------------------
+
+" disable header folding
+let g:vim_markdown_folding_disabled = 1
+let g:vim_markdown_conceal = 0
+let g:tex_conceal = ""
+let g:vim_markdown_math = 1
+
+" support front matter of various format
+let g:vim_markdown_frontmatter = 1  " for YAML format
+let g:vim_markdown_toml_frontmatter = 1  " for TOML format
+let g:vim_markdown_json_frontmatter = 1  " for JSON format
+
+" do not close the preview tab when switching to other buffers
+let g:mkdp_auto_close = 0
+nnoremap <M-m> :MarkdownPreview<CR>
+
