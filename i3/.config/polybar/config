@@ -72,7 +72,7 @@ module-margin = 1.5
 
 wm-restack = i3
 
-modules-left = updates battery volume backlight cpu memory
+modules-left = updates battery volume backlight memory
 modules-center = i3
 modules-right = wlan date time
 
@@ -284,19 +284,6 @@ label-font = 1
 [module/start]
 type = custom/text
 content = "%{A1:rofi -show drun -theme ~/.cache/wal/colors-rofi-dark.rasi:}%{A}"
-
-[module/filesystem]
-type = internal/fs
-
-; Mountpoints
-mount-0 = /
-mount-1 = /home
-
-interval = 10
-fixed-values = true
-spacing = 4
-
-label-mounted = %mountpoint%: %percentage_free%% of %total%
 
 [module/updates]
 type = custom/script
