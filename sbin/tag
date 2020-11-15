@@ -1,0 +1,40 @@
+#!/bin/sh
+
+# Constructs a tag list from the given directories
+# Default is current directory.
+P="."
+
+for i in $*; do
+    if [ -d $i ]; then
+        P="$P $i"
+    else
+        echo "Directory '$i' does not exit! Ignoring."
+    fi
+done
+
+echo "deleting old files ..."
+
+# Cleanup the leftover tags and cscope files
+if [ "$1" == "-r"  ]; then
+    tags=$(find . -maxdepth 5 -name "tags" -o -name "cscope.*")
+    for i in $tags; do
+    ¦   [ -f $i ] && rm $i
+    done
+
+    echo "cleaned directories" && exit 0
+else
+    rm -f tags cscope.*
+fi
+
+echo $P
+
+# Create a list of files which will be tagged
+ag --cc --cpp --lua --make --python --shell -l $P > tagfiles
+#rg --files --type make --type c --type cpp --type py --type sh -l $P > tagfiles # faster tagging
+ctags --langmap=c++:.cpp -L tagfiles &>/dev/null
+rm tagfiles && echo "ctags pass done."
+
+# Create a list of cscope files
+ag --cc -l $P  > cscope.files
+#rg --type c --type cpp -l $P > cscope.files # but much slower database compilation
+cscope -b && rm cscope.files && echo "cscope pass done."
