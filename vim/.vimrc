@@ -74,6 +74,8 @@ let g:clang_format#style_options = {
 
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#whitespace#enabled = 0
+let NERDTreeMinimalUI = 1
+let NERDTreeDirArrows = 1
 
 let g:vimtex_view_general_viewer = 'zathura'
 
@@ -141,6 +143,9 @@ endfunction
 set statusline+=%{GitStatus()}
 
 if has("cscope")
+	let cscopes = ["./cscope.out", "../cscope.out", "../../cscope.out", $CSCOPE_DB]
+	let w:cscope_db = ""
+
 	" use both cscope and ctag for 'ctrl-]', ':ta', and 'vim -t'
 	"set cscopetag
 
@@ -148,16 +153,20 @@ if has("cscope")
 	" if you want the reverse search order.
 	set csto=0
 
-	" add any cscope database in current directory
-	if filereadable("./cscope.out")
-		cs add cscope.out
-	elseif filereadable("../cscope.out")
-		cs add ../cscope.out
-	elseif filereadable("../../cscope.out")
-		cs add ../../cscope.out
-		" else add the database pointed to by environment variable
-	elseif $CSCOPE_DB != ""
-		cs add $CSCOPE_DB
+	" Auto generate tags file on file write of *.c and *.h files
+	" autocmd BufWritePost *.c,*.h silent! !tag . &
+
+	" Find a cscope file that could be readable
+	for c in cscopes
+		if filereadable(c)
+			let w:cscope_db=c
+			break
+		endif
+	endfor
+
+	if exists("w:cscope_db") && w:cscope_db != ""
+		execute "autocmd FileChangedShell " . w:cscope_db . " silent! cs reset"
+		execute "cs add " . w:cscope_db
 	endif
 
 	" show msg when any other cscope db added
