@@ -18,9 +18,18 @@ call vundle#begin()
 	Plugin 'morhetz/gruvbox'
 	Plugin 'dylanaraps/wal.vim'
 	Plugin 'mhinz/vim-signify'
+
+	" PlantUml
+	Plugin 'tyru/open-browser.vim'
+	Plugin 'aklt/plantuml-syntax'
+	Plugin 'weirongxu/plantuml-previewer.vim'
+
+	" LaTeX
 	"Plugin 'lervag/vimtex'
 call vundle#end()
 filetype plugin indent on    " required
+
+let mapleader=","
 
 " reloading vimrc: :so %
 colorscheme gruvbox
@@ -38,12 +47,15 @@ set termencoding=utf-8
 
 " prevent mouse vanishing
 set mousehide
-set mousemodel=popup
+set mousemodel=extend
+set ttyfast
+set updatetime=100
+
 set laststatus=2
 set signcolumn=yes
-set ttymouse=sgr
 
-set ttyfast
+" Alacritty or other terminals
+set ttymouse=xterm " sgr
 
 " enable 256 colors on Vim
 set t_Co=256
@@ -62,7 +74,6 @@ set number
 set hlsearch
 set linebreak
 
-
 set colorcolumn=120
 highlight ColorColumn ctermbg=darkgray
 
@@ -78,12 +89,12 @@ let NERDTreeMinimalUI = 1
 let NERDTreeDirArrows = 1
 
 let g:vimtex_view_general_viewer = 'zathura'
+let g:signify_sign_change = '~'
 
 autocmd FileType c call FT_c()
-autocmd FileType c,cpp map <buffer><Leader>x <Plug>(operator-clang-format)
+"autocmd FileType c,cpp map <buffer><Leader>x <Plug>(operator-clang-format)
 autocmd FileType tex call FT_tex()
 autocmd FileType tex setl updatetime=1
-"autocmd BufWritePost * GitGutter
 
 " NORMAL mode mappings
 nmap <F2> :NERDTreeToggle<CR>
@@ -91,10 +102,8 @@ nnoremap <F8> :let @/='\<<C-R>=expand("<cword>")<CR>\>'<CR>:set hls<CR>
 nnoremap <S-F8> :set nohls<CR>
 nmap <F9> mz:execute TabToggle()<CR>'z
 
-nmap <leader>gs :Gstatus<CR>
 nmap <leader>gb :Gblame<CR>
 nmap <leader>gd :Gdiff<CR>
-
 
 " INSERT mode mappings
 inoremap <c-d> <esc>dd
@@ -137,10 +146,9 @@ function FT_tex()
 endfunction
 
 function! GitStatus()
-	let [a,m,r] = GitGutterGetHunkSummary()
-	return printf('+%d ~%d -%d', a, m, r)
+	return ' %f '. sy#repo#get_stats_decorated()
 endfunction
-set statusline+=%{GitStatus()}
+set statusline=%!GitStatus()
 
 if has("cscope")
 	let cscopes = ["./cscope.out", "../cscope.out", "../../cscope.out", $CSCOPE_DB]
