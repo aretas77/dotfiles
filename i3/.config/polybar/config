@@ -55,7 +55,7 @@ font-2 = Hack Nerd Font:style=Regular:size=12;3
 ; COLORS ;
 ;--------;
 
-background = #aafff
+background = #00ffffff
 foreground = ${colors.foreground}
 border-color = 0
 
@@ -78,6 +78,8 @@ modules-right = wlan date time
 
 tray-position = none
 tray-detached = true
+
+pseudo-transparency = false
 
 ;----------;
 ; SETTINGS ;
@@ -165,6 +167,12 @@ label-urgent-font		= 2
 
 label-separator			= |
 label-separator-padding = 2
+
+[module/system-bluetooth-bluetoothctl]
+type = custom/script
+exec = ~/dotfiles/i3/.config/polybar/scripts/system-bluetooth-bluetoothctl.sh
+tail = true
+click-left = ~/dotfiles/i3/.config/polybar/scripts/system-bluetooth-bluetoothctl.sh --toggle &
 
 [module/time]
 type = internal/date
