@@ -58,7 +58,7 @@ floating_modifier $mod
 
 bindsym $mod+Return exec alacritty
 bindsym $mod+Shift+q kill
-bindsym $mod+d exec rofi -show drun -theme ~/.cache/wal/colors-rofi-dark.rasi
+bindsym $mod+d exec rofi -show drun -theme /usr/share/rofi/themes/DarkBlue.rasi
 
 # change focus
 bindsym $mod+Left focus left
