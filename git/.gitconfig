@@ -20,3 +20,5 @@
 	##################
 	s = status
 	sb = status -s -b
+[init]
+	defaultBranch = main
