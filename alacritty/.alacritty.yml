@@ -47,25 +47,25 @@ scrolling:
   #multiplier: 3
 
 # Font configuration
-#font:
-#  normal:
-#    family: iosevka
-#    style: Regular
-#
-#  bold:
-#    family: iosevka
-#    style: Bold
-#
-#  italic:
-#    family: iosevka
-#    style: Italic
-#
-#  bold_italic:
-#    family: iosevka
-#    style: Bold Italic
-#
-#  # Point size
-#  size: 11.0
+font:
+  normal:
+    family: terminus
+    style: Regular
+
+  bold:
+    family: terminus
+    style: Bold
+
+  italic:
+    family: terminus
+    style: Italic
+
+  bold_italic:
+    family: terminus
+    style: Bold Italic
+
+  # Point size
+  size: 10.0
 
   # Offset is the extra space around each character. `offset.y` can be thought of
   # as modifying the line spacing, and `offset.x` as modifying the letter spacing.
