@@ -7,8 +7,8 @@ set-option -g renumber-windows on
 set -g base-index 1
 set -g pane-base-index 1
 set-option -g repeat-time 0
-set -g default-shell /usr/bin/zsh
-set -g default-terminal "screen-256color"
+#set -g default-shell /usr/bin/zsh
+#set -g default-terminal "screen-256color"
 
 # Reload tmux config
 bind r source-file ~/.tmux.conf \; display "Reloaded!"
@@ -21,4 +21,4 @@ set-window-option -g automatic-rename on
 set-option -g set-titles on
 
 # Set the default terminal mode to 256color mode
-set -ga terminal-overrides ",xterm-rxvt-unicode:Tc"
+#set -ga terminal-overrides ",xterm-rxvt-unicode:Tc"

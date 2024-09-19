@@ -3,9 +3,9 @@
 ##
 
 # Where tmux pane name is shown left or right
-set -g status-justify left
-set -g status-bg default
-set -g status-fg red
+#set -g status-justify left
+#set -g status-bg white
+#set -g status-fg red
 
 # Update the status line every 2 seconds (default is 15s)
 set -g status-interval 2
@@ -47,4 +47,4 @@ set-option -g visual-silence off
 set-option -g bell-action none
 
 # modes
-setw -g clock-mode-colour colour135
+#setw -g clock-mode-colour colour256
