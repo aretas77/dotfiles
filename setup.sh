@@ -25,6 +25,13 @@ setup_zsh()
 	setup_ohmyzsh_theme
 }
 
+setup_tmux()
+{
+	git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+}
+
 
 # used apps
 apps=(git curl)
+
+setup_tmux
