@@ -105,6 +105,22 @@ alias pr="fzf --preview="cat {}" --preview-window=right:70%:wrap"
 unsetopt share_history
 setopt appendhistory nomatch notify
 
-PATH="/home/aretasp/.local/bin${PATH:+:${PATH}}"; export PATH;
+#eval "$(pyenv init -)"
+#export WORKON_HOME=$HOME/.virtualenvs
+#source /usr/bin/virtualenvwrapper.sh
+#export PYENV_VIRTUALENVWRAPPER_PREFER_PYVENV="true"
+
+PATH="/home/aretasp/.local/bin${PATH:+:${PATH}}";
 PATH="/home/aretasp/sbin${PATH:+:${PATH}}"; export PATH;
+LD_LIBRARY_PATH="/usr/local/lib${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}";
+LD_LIBRARY_PATH="/home/aretasp/.local/lib${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}"; export LD_LIBRARY_PATH;
+PYTHONPATH="/usr/local/lib/python3.11/site-packages"; export PYTHONPATH;
+
+export NNN_PLUG='f:finder;o:fzopen;d:diffs;v:imgview;p:preview-tabbed'
+export NNN_FIFO='/tmp/nnn.fifo'
+#export NNN_TERMINAL='tmux'
+
 source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
+export PYENV_ROOT="$HOME/.pyenv"
+command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init -)"
